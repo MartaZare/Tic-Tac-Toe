@@ -3,8 +3,9 @@ const scoreboardMessage = document.getElementById("scoreboardMessage");
 const gameBoradDiv = document.getElementById("gameBoradDiv");
 const playerOnePoints = document.getElementById("playerOnePoints");
 const playerTwoPoints = document.getElementById("playerTwoPoints");
+const playAgainBtn = document.getElementById("playAgainBtn");
 
-const gameboard = ["", "", "", "", "", "", "", "", ""];
+const gameboard = new Array(9);
 let turns = 0;
 
 renderBoard();
@@ -49,6 +50,7 @@ function fillGameboardArray(filledDiv) {
 }
 
 const playRound = (cellNumber) => {
+  console.log(turns);
   if (checkWinner(cellNumber)) {
     declareWinner();
   } else if (turns === 9) {
@@ -85,28 +87,34 @@ const checkWinner = (cellNumber) => {
     let conditionIndex2 = condition[1];
     let conditionIndex3 = condition[2];
 
-    if (
-      gameboard[conditionIndex1] === activePlayer.symbol &&
-      gameboard[conditionIndex2] === activePlayer.symbol &&
-      gameboard[conditionIndex3] === activePlayer.symbol
-    ) {
-      activePlayer.points += 1;
-      return true;
+    if (gameboard.every((elem) => elem !== undefined)) {
+      if (
+        gameboard[conditionIndex1] === activePlayer.symbol &&
+        gameboard[conditionIndex2] === activePlayer.symbol &&
+        gameboard[conditionIndex3] === activePlayer.symbol
+      ) {
+        activePlayer.points += 1;
+        return true;
+      }
     }
   }
   return false;
 };
 
 function declareWinner() {
-  if (activePlayer.symbol == "X") {
-    clearScoreboard(playerOnePoints);
-    clearScoreboard(scoreboardMessage);
+  if (activePlayer.symbol === "X") {
+    console.log(playerOnePoints);
+    clearDiv(playerOnePoints);
+    console.log(playerOnePoints);
+    console.log(scoreboardMessage);
+    clearDiv(scoreboardMessage);
+    console.log(scoreboardMessage);
 
     playerOnePoints.innerHTML = players[0].points;
     scoreboardMessage.innerHTML += "Player X has won this round!";
-  } else if (activePlayer.symbol == "O") {
-    clearScoreboard(playerTwoPoints);
-    clearScoreboard(scoreboardMessage);
+  } else if (activePlayer.symbol === "O") {
+    clearDiv(playerTwoPoints);
+    clearDiv(scoreboardMessage);
 
     playerTwoPoints.innerHTML = players[1].points;
     scoreboardMessage.innerHTML += "Player O has won this round!";
@@ -114,12 +122,28 @@ function declareWinner() {
 }
 
 function declareTie() {
-  clearScoreboard(scoreboardMessage);
+  clearDiv(scoreboardMessage);
   scoreboardMessage.innerHTML += "It's a tie!";
 }
 
-function clearScoreboard(divToClear) {
-  divToClear.innerHTML == "";
+function clearDiv(divToClear) {
+  divToClear.innerHTML = "";
 }
 
-function playAgain() {}
+playAgainBtn.addEventListener("click", function (e) {
+  turns = 0;
+  console.log(`The array: ${gameboard} 
+  The board: ${gameBoradDiv}`);
+  clearDiv(gameBoradDiv);
+  console.log(`
+  The board after clear: ${gameBoradDiv}`);
+  clearArray(gameboard);
+  console.log(`The array after clear: ${gameboard} 
+  `);
+
+  renderBoard();
+});
+
+function clearArray(array) {
+  array.forEach((_, index) => (array[index] = ""));
+}
