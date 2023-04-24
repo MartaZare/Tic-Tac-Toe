@@ -1,4 +1,9 @@
+const scoreboardDiv = document.getElementById("scoreboardDiv");
+const scoreboardMessage = document.getElementById("scoreboardMessage");
 const gameBoradDiv = document.getElementById("gameBoradDiv");
+const playerOnePoints = document.getElementById("playerOnePoints");
+const playerTwoPoints = document.getElementById("playerTwoPoints");
+
 const gameboard = ["", "", "", "", "", "", "", "", ""];
 let turns = 0;
 
@@ -27,8 +32,8 @@ function addSymbolToCell(activeCell) {
 }
 
 const players = [
-  { name: "playerOne", symbol: "X" },
-  { name: "playerTwo", symbol: "O" },
+  { name: "playerOne", symbol: "X", points: 0 },
+  { name: "playerTwo", symbol: "O", points: 0 },
 ];
 
 let activePlayer = players[0];
@@ -45,9 +50,9 @@ function fillGameboardArray(filledDiv) {
 
 const playRound = (cellNumber) => {
   if (checkWinner(cellNumber)) {
-    alert("Player ... have won!");
+    declareWinner();
   } else if (turns === 9) {
-    alert("That's a draw!");
+    declareTie();
   }
   switchPlayerTurn();
 };
@@ -85,8 +90,36 @@ const checkWinner = (cellNumber) => {
       gameboard[conditionIndex2] === activePlayer.symbol &&
       gameboard[conditionIndex3] === activePlayer.symbol
     ) {
+      activePlayer.points += 1;
       return true;
     }
   }
   return false;
 };
+
+function declareWinner() {
+  if (activePlayer.symbol == "X") {
+    clearScoreboard(playerOnePoints);
+    clearScoreboard(scoreboardMessage);
+
+    playerOnePoints.innerHTML = players[0].points;
+    scoreboardMessage.innerHTML += "Player X has won this round!";
+  } else if (activePlayer.symbol == "O") {
+    clearScoreboard(playerTwoPoints);
+    clearScoreboard(scoreboardMessage);
+
+    playerTwoPoints.innerHTML = players[1].points;
+    scoreboardMessage.innerHTML += "Player O has won this round!";
+  }
+}
+
+function declareTie() {
+  clearScoreboard(scoreboardMessage);
+  scoreboardMessage.innerHTML += "It's a tie!";
+}
+
+function clearScoreboard(divToClear) {
+  divToClear.innerHTML == "";
+}
+
+function playAgain() {}
