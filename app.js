@@ -1,3 +1,4 @@
+const playersTurn = document.getElementById("playersTurn");
 const scoreboardDiv = document.getElementById("scoreboardDiv");
 const scoreboardMessage = document.getElementById("scoreboardMessage");
 const gameBoradDiv = document.getElementById("gameBoradDiv");
@@ -32,6 +33,13 @@ function addSymbolToCell(activeCell) {
     if (activeCell.classList.item(2) === "empty") {
       activeCell.classList.remove("empty");
       activeCell.innerHTML += activePlayer.symbol;
+      if (activePlayer.symbol === "X") {
+        activeCell.style.color = "#4ab6d5";
+        activeCell.style.textShadow = "0 0 30px #919bd3";
+      } else if (activePlayer.symbol === "O") {
+        activeCell.style.color = "#db52b4";
+        activeCell.style.textShadow = "0 0 30px #919bd3";
+      }
       turns += 1;
       fillGameboardArray(activeCell);
     } else {
@@ -49,6 +57,12 @@ let activePlayer = players[0];
 
 const switchPlayerTurn = () => {
   activePlayer = activePlayer === players[0] ? players[1] : players[0];
+
+  if (activePlayer.symbol === "X") {
+    playersTurn.innerHTML = "X";
+  } else if (activePlayer.symbol === "O") {
+    playersTurn.innerHTML = "O";
+  }
 };
 
 function fillGameboardArray(filledDiv) {
@@ -111,16 +125,17 @@ const checkWinner = (cellNumber) => {
 
 function declareWinner() {
   gameOver = true;
+  clearDiv(scoreboardMessage);
   if (activePlayer.symbol === "X") {
     clearDiv(playerOnePoints);
-    clearDiv(scoreboardMessage);
     playerOnePoints.innerHTML = players[0].points;
     scoreboardMessage.innerHTML += "Player X has won this round!";
+    scoreboardMessage.style.color = "#4ab6d5";
   } else if (activePlayer.symbol === "O") {
     clearDiv(playerTwoPoints);
-    clearDiv(scoreboardMessage);
     playerTwoPoints.innerHTML = players[1].points;
     scoreboardMessage.innerHTML += "Player O has won this round!";
+    scoreboardMessage.style.color = "#db52b4";
   }
 }
 

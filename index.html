@@ -4,24 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <link href="Design/style.css" rel="stylesheet" type="text/css" />
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <div id="playersTurn">X</div>
+      <div id="scoreboardMessage">
+        <img id="arrow" src="Images/leftArrow.png" /> Check Who's Turn
+      </div>
+      <img
+        id="restartGameBtn"
+        src="/Images/restartGameIcon.png"
+        alt="restart-button"
+      />
+    </header>
     <main>
       <div id="scoreboardDiv">
-        <div id="scoreboardMessage"></div>
-        <p>Player "X" :</p>
         <div id="playerOnePoints"></div>
-        <p>Player "O" :</p>
+        <p>:</p>
         <div id="playerTwoPoints"></div>
       </div>
       <div id="gameBoradDiv"></div>
-      <button id="playAgainBtn">PLAY AGAIN!</button>
-      <button id="restartGameBtn">RESTART</button>
+      <button id="playAgainBtn">Play</button>
     </main>
-    <footer></footer>
+
+    <footer>
+      <p>
+        Copyright © 2023 MartaZare
+        <a href="https://github.com/MartaZare/Tic-Tac-Toe" target="_blank"
+          ><img src="/Images/github.png"
+        /></a>
+      </p>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>

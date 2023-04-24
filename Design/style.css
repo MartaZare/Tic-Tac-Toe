@@ -1,0 +1,158 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  font-family: "Concert One", cursive;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #432e73;
+}
+
+header {
+  background-color: #432e73;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  width: 600px;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+#playersTurn,
+#scoreboardMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px #919bd3;
+  border-radius: 20px;
+}
+
+#playersTurn {
+  color: #432e73;
+  font-size: 60px;
+  background-color: #919bd3;
+  padding: 4px 20px;
+  line-height: 60px;
+}
+
+#scoreboardMessage {
+  color: #919bd3;
+  font-size: 25px;
+  width: 100%;
+  height: 70px;
+  color: #4ab6d5;
+  font-size: 25px;
+}
+
+header > img {
+  width: 70px;
+  background-color: #919bd3;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+img:hover {
+  background-color: #9865c7;
+}
+
+#arrow {
+  width: 25px;
+  margin: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#scoreboardDiv {
+  display: flex;
+  justify-content: space-between;
+  font-size: 60px;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+#scoreboardDiv p {
+  color: #919bd3;
+}
+
+#playerOnePoints {
+  color: #4ab6d5;
+}
+
+#playerTwoPoints {
+  color: #db52b4;
+}
+
+#playAgainBtn {
+  border: solid 2px #919bd3;
+  border-radius: 20px;
+  color: #432e73;
+  font-size: 25px;
+  background-color: #919bd3;
+  padding: 10px 70px;
+}
+
+#playAgainBtn:hover {
+  border: solid 2px #9865c7;
+  background-color: #9865c7;
+}
+
+#gameBoradDiv {
+  display: grid;
+  width: 400px;
+  height: 400px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cell {
+  width: 33, 33%;
+  height: 33, 33%;
+  border: solid 2px #919bd3;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #919bd3;
+  font-family: "Concert One", cursive;
+  font-size: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  border-color: #9865c7;
+  box-shadow: 0 0 10px #9865c7;
+}
+
+footer {
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
+footer p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  color: #919bd3;
+}
+
+footer img {
+  width: 25px;
+}/*# sourceMappingURL=style.css.map */

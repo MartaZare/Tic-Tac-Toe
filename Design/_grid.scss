@@ -1,0 +1,28 @@
+@use "variables";
+
+#gameBoradDiv {
+  display: grid;
+  width: 400px;
+  height: 400px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cell {
+  width: 33, 33%;
+  height: 33, 33%;
+  border: solid 2px variables.$first-accent-color;
+  border-radius: 20px;
+  box-shadow: 0 0 10px variables.$first-accent-color;
+  font-family: "Concert One", cursive;
+  font-size: variables.$font-0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  border-color: variables.$second-accent-color;
+  box-shadow: 0 0 10px variables.$second-accent-color;
+}
