@@ -4,6 +4,7 @@ const gameBoradDiv = document.getElementById("gameBoradDiv");
 const playerOnePoints = document.getElementById("playerOnePoints");
 const playerTwoPoints = document.getElementById("playerTwoPoints");
 const playAgainBtn = document.getElementById("playAgainBtn");
+const restartGameBtn = document.getElementById("restartGameBtn");
 
 const gameboard = new Array(9);
 let turns = 0;
@@ -26,7 +27,7 @@ function renderBoard() {
 
 function addSymbolToCell(activeCell) {
   if (gameOver) {
-    cell.onclick = () => {};
+    return;
   } else {
     if (activeCell.classList.item(2) === "empty") {
       activeCell.classList.remove("empty");
@@ -133,19 +134,34 @@ function clearDiv(divToClear) {
   divToClear.innerHTML = "";
 }
 
-playAgainBtn.addEventListener("click", function (e) {
+playAgainBtn.onclick = loadNewRound;
+restartGameBtn.onclick = function () {
+  loadNewRound();
+  resetPlayersPoints();
+};
+
+function loadNewRound() {
   gameOver = false;
   turns = 0;
-  console.log(`The array: ${gameboard} 
-  The board: ${gameBoradDiv}`);
   clearDiv(gameBoradDiv);
-  console.log(`
-  The board after clear: ${gameBoradDiv}`);
+  clearDiv(scoreboardMessage);
   clearArray(gameboard);
-  console.log(`The array after clear: ${gameboard} 
-  `);
   renderBoard();
-});
+}
+
+function resetPlayersPoints() {
+  let result = window.confirm(
+    "After restart the players scoores will be lost. Do you want to continue?"
+  );
+  if (result === true) {
+    players[0].points = 0;
+    players[1].points = 0;
+    playerOnePoints.innerHTML = "";
+    playerTwoPoints.innerHTML = "";
+  } else {
+    return;
+  }
+}
 
 function clearArray(array) {
   array.forEach((_, index) => (array[index] = ""));
