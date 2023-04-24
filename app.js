@@ -7,6 +7,7 @@ const playAgainBtn = document.getElementById("playAgainBtn");
 
 const gameboard = new Array(9);
 let turns = 0;
+let gameOver = false;
 
 renderBoard();
 
@@ -16,19 +17,25 @@ function renderBoard() {
     cell.classList.add("cell");
     cell.classList.add(i);
     cell.classList.add("empty");
+
     cell.onclick = () => addSymbolToCell(cell);
+
     gameBoradDiv.appendChild(cell);
   }
 }
 
 function addSymbolToCell(activeCell) {
-  if (activeCell.classList.item(2) === "empty") {
-    activeCell.classList.remove("empty");
-    activeCell.innerHTML += activePlayer.symbol;
-    turns += 1;
-    fillGameboardArray(activeCell);
+  if (gameOver) {
+    cell.onclick = () => {};
   } else {
-    return;
+    if (activeCell.classList.item(2) === "empty") {
+      activeCell.classList.remove("empty");
+      activeCell.innerHTML += activePlayer.symbol;
+      turns += 1;
+      fillGameboardArray(activeCell);
+    } else {
+      return;
+    }
   }
 }
 
@@ -102,26 +109,22 @@ const checkWinner = (cellNumber) => {
 };
 
 function declareWinner() {
+  gameOver = true;
   if (activePlayer.symbol === "X") {
-    console.log(playerOnePoints);
     clearDiv(playerOnePoints);
-    console.log(playerOnePoints);
-    console.log(scoreboardMessage);
     clearDiv(scoreboardMessage);
-    console.log(scoreboardMessage);
-
     playerOnePoints.innerHTML = players[0].points;
     scoreboardMessage.innerHTML += "Player X has won this round!";
   } else if (activePlayer.symbol === "O") {
     clearDiv(playerTwoPoints);
     clearDiv(scoreboardMessage);
-
     playerTwoPoints.innerHTML = players[1].points;
     scoreboardMessage.innerHTML += "Player O has won this round!";
   }
 }
 
 function declareTie() {
+  gameOver = true;
   clearDiv(scoreboardMessage);
   scoreboardMessage.innerHTML += "It's a tie!";
 }
@@ -131,6 +134,7 @@ function clearDiv(divToClear) {
 }
 
 playAgainBtn.addEventListener("click", function (e) {
+  gameOver = false;
   turns = 0;
   console.log(`The array: ${gameboard} 
   The board: ${gameBoradDiv}`);
@@ -140,7 +144,6 @@ playAgainBtn.addEventListener("click", function (e) {
   clearArray(gameboard);
   console.log(`The array after clear: ${gameboard} 
   `);
-
   renderBoard();
 });
 
