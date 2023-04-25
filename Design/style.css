@@ -83,7 +83,7 @@ img:hover {
   margin: 10px;
 }
 
-@media only screen and (max-width: 660px) and (max-height: 888px) {
+@media only screen and (max-width: 660px) {
   header {
     height: 15%;
     width: 480px;
@@ -233,7 +233,7 @@ main {
   box-shadow: 0 0 10px #9865c7;
 }
 
-@media only screen and (max-width: 660px) and (max-height: 888px) {
+@media only screen and (max-width: 660px) {
   #gameBoradDiv {
     width: 320px;
     height: 320px;
