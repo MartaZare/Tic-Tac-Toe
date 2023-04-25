@@ -16,14 +16,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 2px variables.$first-accent-color;
-  border-radius: 20px;
 }
 
 #playersTurn {
-  color: variables.$primary-background-color;
+  color: variables.$first-accent-color;
   font-size: variables.$font-1;
-  background-color: variables.$first-accent-color;
   padding: 4px 20px;
   line-height: variables.$font-1;
 }
@@ -35,6 +32,8 @@ header {
   height: 70px;
   color: variables.$third-accent-color;
   font-size: variables.$font-2;
+  border: solid 2px variables.$first-accent-color;
+  border-radius: 20px;
 }
 
 header > img {
@@ -51,4 +50,67 @@ img:hover {
 #arrow {
   width: 25px;
   margin: 10px;
+}
+
+@media only screen and (max-width: 660px) and (max-height: 888px) {
+  header {
+    height: 15%;
+    width: 480px;
+    margin-top: 20px;
+    padding: 0px 10px;
+    gap: 6px;
+  }
+
+  #playersTurn {
+    font-size: variables.$font-1-m;
+    padding: 3.2px 0px;
+  }
+
+  #scoreboardMessage {
+    font-size: variables.$font-2-m;
+    height: 56px;
+    font-size: variables.$font-2-m;
+  }
+
+  header > img {
+    width: 56px;
+    padding: 8px;
+  }
+
+  #arrow {
+    width: 20px;
+    margin: 8px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  header {
+    height: 15%;
+    width: 430px;
+    margin-top: 21px;
+    padding: 0px 9px;
+    gap: 10px;
+  }
+
+  #playersTurn {
+    font-size: variables.$font-1-s;
+    padding: 0px;
+    padding-left: 30px;
+  }
+
+  #scoreboardMessage {
+    font-size: variables.$font-2-s;
+    height: 50px;
+    font-size: variables.$font-2-s;
+  }
+
+  header > img {
+    width: 50px;
+    padding: 7px;
+  }
+
+  #arrow {
+    width: 18px;
+    margin: 7px;
+  }
 }

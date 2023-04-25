@@ -1,8 +1,12 @@
 @use "variables";
 
 footer {
-  padding-top: 70px;
-  padding-bottom: 20px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  position: sticky;
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 
 footer p {
@@ -15,4 +19,36 @@ footer p {
 
 footer img {
   width: 25px;
+}
+
+@media only screen and (max-height: 888px) {
+  footer {
+    padding-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  footer p {
+    gap: 8px;
+    font-size: variables.$font-2-m;
+  }
+
+  footer img {
+    width: 20px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  footer {
+    padding-top: 50px;
+  }
+
+  footer p {
+    gap: 7px;
+    font-size: variables.$font-2-s;
+  }
+
+  footer img {
+    width: 18px;
+  }
 }
